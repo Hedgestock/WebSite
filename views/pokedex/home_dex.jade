@@ -1,0 +1,8 @@
+extends partials/layout
+
+block content
+  script(type="text/javascript" src="/pokedex_resources/javascript/home_dex.js")
+  div.main-frame
+    input#dex_searchbar.dex-searchbar
+    br
+    button#dex_searchbtn(onclick="search();") Search that pokémon !

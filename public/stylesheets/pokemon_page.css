@@ -1,0 +1,211 @@
+:root {
+  /* CSS - Cascading Style Sheet */
+  /* Palette color codes */
+  /* Palette URL: http://paletton.com/#uid=14I0u0kllllaFw0g0qFqFg0w0aF */
+
+  /* Feel free to copy&paste color codes to your application */
+
+
+  /* As hex codes */
+
+  --color-primary-0: #D10000;	/* Main Primary color */
+  --color-primary-1: #FAC4C4;
+  --color-primary-2: #E94646;
+  --color-primary-3: #A20000;
+  --color-primary-4: #610000;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+a {
+    color: plum;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:visited:hover, a:hover, a:active {
+  color: darkorchid;
+}
+
+a:visited {
+  color: var(--color-primary-0);
+}
+
+button{
+  background-color: var(--color-primary-3);
+  margin: 5px;
+  color: white;
+  font-size: 1.3em;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 100px;
+  outline:0;
+}
+
+button:hover, button:active {
+  border-width: 3px;
+  margin: 3px;
+}
+
+.vertical-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.main-frame {
+  float: left;
+  background-color: lightblue;
+  border: 1px solid steelblue;
+  border-radius: 10px;
+  margin: 2px;
+  padding: 3px;
+}
+
+.pokemon-name {
+  font-weight: bold;
+}
+
+.pokemon-sprite {
+  background-color: aliceblue;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+}
+
+.dex-searchbar {
+  border-radius: 15px;
+  font-size: 1.25em;
+  padding-left: 5px;
+  padding-right: 5px;
+  outline:0;
+}
+
+.stat {
+  clear: both;
+  white-space: pre;
+}
+
+.stat-bar {
+  float: right;
+  border: 1px solid green;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1px;
+  
+  /* Firefox specific */
+  background-color: aliceblue;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+/* Firefox specific */
+.stat-bar::-moz-progress-bar {
+  background-color: var(--color-primary-0);
+  border-radius: 4px; 
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+/* Chrome specific */
+.stat-bar::-webkit-progress-bar {
+  background-color: aliceblue;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+/* Chrome specific */
+.stat-bar::-webkit-progress-value {
+  background-color: var(--color-primary-0);
+  border-radius: 4px; 
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+/***********************
+**       NAVBAR       **
+***********************/
+
+.navbar {
+  overflow: hidden;
+  background-color: var(--color-primary-3);
+  margin: 0;
+  padding: 0;
+  min-width: 200px;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--color-primary-1);
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar a:visited {
+  color: var(--color-primary-2); 
+}
+
+.navbar a:hover {
+  color: orange;
+}
+
+.nav-row {
+  display: flex;
+}
+
+.nav-main {
+  display: flex;
+  color: var(--color-primary-1);
+  float: left;
+  border-left: 3px solid var(--color-primary-0);
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 2em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nav-first {
+  border: none;
+  font-size: 3em;
+}
+
+.navbar .side {
+  width: 70px;
+  padding: 10px;
+  border: 2px solid var(--color-primary-0);
+  border-radius: 7px;
+  background-color: var(--color-primary-4);
+  white-space: nowrap;
+}
+
+.navbar .side:hover {
+  border-radius: 14px;
+}
+
+.left-align {
+  text-align: left;
+  float: left;
+  margin: 2px;
+}
+
+.right-align {
+  text-align: right;
+  float: right;
+  margin: 2px;
+}
+
+.nav-searchbar {
+  margin-top: 3px;
+  margin-right: 3px;
+  text-align: left; 
+}
+
+.navbar .vertical-center > a{
+  color: var(--color-primary-1);
+}
+
+/***********************
+**       FOOTER       **
+***********************/
+
+footer {
+  clear: both;
+  border-top: 1px solid grey;
+}

@@ -1,0 +1,28 @@
+extends partials/layout
+
+block content
+  script(type="text/javascript" src="/pokedex_resources/javascript/pokemon_page.js")
+  div.main-frame.pokemon-overview
+    div.pokemon-name= species.name
+    img(src= pokemon.sprites.front_default).pokemon-sprite
+  div.main-frame
+    div#type-frame= types[0].name + types[1].name
+    div.stat-frame
+      div.stat
+        | HP: 
+        progress#hp(max="255", value= pokemon.stats[5].base_stat).stat-bar
+      div.stat
+        | Attack: 
+        progress#attack(max="255", value= pokemon.stats[4].base_stat).stat-bar
+      div.stat
+        | Defense: 
+        progress#defense(max="255", value= pokemon.stats[3].base_stat).stat-bar
+      div.stat
+        | Special attack: 
+        progress#special-attack(max="255", value= pokemon.stats[2].base_stat).stat-bar
+      div.stat
+        | Special defense: 
+        progress#special-defense(max="255", value= pokemon.stats[1].base_stat).stat-bar
+      div.stat
+        | Speed: 
+        progress#speed(max="255", value= pokemon.stats[0].base_stat).stat-bar
