@@ -2,11 +2,12 @@ extends partials/layout
 
 block content
   script(type="text/javascript" src="/pokedex_resources/javascript/pokemon_page.js")
-  div.main-frame.pokemon-overview
+  div.main-frame.left-align.pokemon-overview
     div.pokemon-name= species.name
     img(src= pokemon.sprites.front_default).pokemon-sprite
-  div.main-frame
-    div#type-frame= types[0].name + types[1].name
+  div.main-frame.left-align
+    div#type_frame(style="background: linear-gradient(90deg," + types[0].color + "," + types[0].color + "," + types[1].color + "," + types[1].color + ");").left-align.type-frame
+      = types[0].name + " " + types[1].name
     div.stat-frame
       div.stat
         | HP: 
@@ -26,3 +27,4 @@ block content
       div.stat
         | Speed: 
         progress#speed(max="255", value= pokemon.stats[0].base_stat).stat-bar
+  

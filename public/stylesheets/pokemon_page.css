@@ -21,17 +21,12 @@ body {
 }
 
 a {
-    color: plum;
-    text-decoration: none;
-    font-weight: bold;
 }
 
 a:visited:hover, a:hover, a:active {
-  color: darkorchid;
 }
 
 a:visited {
-  color: var(--color-primary-0);
 }
 
 button{
@@ -55,13 +50,42 @@ button:hover, button:active {
   margin-bottom: auto;
 }
 
-.main-frame {
+.left-align {
+  text-align: left;
   float: left;
+  margin: 2px;
+}
+
+.right-align {
+  text-align: right;
+  float: right;
+  margin: 2px;
+}
+
+.main-frame {
   background-color: lightblue;
   border: 1px solid steelblue;
   border-radius: 10px;
   margin: 2px;
   padding: 3px;
+}
+
+.type-frame {
+  color: white;
+  font-weight: bold;
+  overflow: hidden;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px; 
+  padding-bottom: 1px; 
+  border: 1px solid white;
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px black;
+  text-shadow:
+		-1px -1px 0 black,
+		1px -1px 0 black,
+		-1px 1px 0 black,
+		1px 1px 0 black;
 }
 
 .pokemon-name {
@@ -177,18 +201,6 @@ button:hover, button:active {
 
 .navbar .side:hover {
   border-radius: 14px;
-}
-
-.left-align {
-  text-align: left;
-  float: left;
-  margin: 2px;
-}
-
-.right-align {
-  text-align: right;
-  float: right;
-  margin: 2px;
 }
 
 .nav-searchbar {
