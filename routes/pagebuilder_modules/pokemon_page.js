@@ -22,24 +22,38 @@ module.exports = {
   },
   
   getTypes: function (pokemon) {
+      console.log("function: getTypes");
+
     var res = [{"name": "", "color": ""}, {"name": "", "color": ""}];
-    res[0].name = pokemon.types[0].type.name;
-    res[0].color = this.typeColors[res[0].name];
+    res[1].name = pokemon.types[0].type.name;
+    res[1].color = this.typeColors[res[1].name];
     if(pokemon.types[1]) {
-      res[1].name = pokemon.types[1].type.name;
-      res[1].color = this.typeColors[res[1].name];
+      res[0].name = pokemon.types[1].type.name;
+      res[0].color = this.typeColors[res[0].name];
     } else {
-      res[1].color = this.typeColors[res[0].name];
+      res[0].color = this.typeColors[res[1].name];
     }
     return res;
   },
 
-  geDefaultVariety: function (species) {
+  getDefaultVariety: function (species) {
+    console.log("function: getDefaultVariety");
     for (var i in species.varieties)
     {
       if (species.varieties[i].is_default)
         return species.varieties[i];
     }
     console.log(new Error().stack);
+  },
+  
+  getDescriptions:  function (species) {
+    console.log("function: getDescriptions");
+    var res = []
+    for (var i in species.flavor_text_entries)
+    {
+      if (species.flavor_text_entries[i].language.name == "en")
+        res.push(species.flavor_text_entries[i]);
+    }
+    return res;
   },
 }

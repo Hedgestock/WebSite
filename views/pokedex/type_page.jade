@@ -1,4 +1,5 @@
 extends partials/layout
 
 block content
-  p= pokemon
+  - var col = (type.name == 'ice' ? 'blue' : 'red');
+  p(style="color: #{col}; background-color: #{bc}")= type.name

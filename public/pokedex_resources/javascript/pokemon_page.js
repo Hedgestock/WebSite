@@ -1,10 +1,12 @@
-function printName (elt, res) 
-{
-  return elt.toString();
+var selectedDescription;
+
+function changeDescription() {
+  document.getElementById(selectedDescription).style.display = "none";
+  selectedDescription = document.getElementById("version_description_select").value;
+  document.getElementById(selectedDescription).style.display = "block";
 }
 
-function printTypes(types)
-{
-  document.getElementById("type-frame").innerHTML += types.forEach(printName) + " | ";
-}
-
+window.addEventListener("load",function () { 
+  selectedDescription = document.getElementById("version_description_select").value;
+  document.getElementById(selectedDescription).style.display = "block";
+},false);

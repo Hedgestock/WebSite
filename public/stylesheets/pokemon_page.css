@@ -45,6 +45,14 @@ button:hover, button:active {
   margin: 3px;
 }
 
+select {
+  background-color: aliceblue;
+  border: 1px solid steelblue;
+  border-radius: 10px;
+  outline: 0;
+  text-transform: capitalize;
+}
+
 .vertical-center {
   margin-top: auto;
   margin-bottom: auto;
@@ -63,11 +71,21 @@ button:hover, button:active {
 }
 
 .main-frame {
+  display: table;
   background-color: lightblue;
   border: 1px solid steelblue;
   border-radius: 10px;
   margin: 2px;
   padding: 3px;
+  overflow: auto;
+}
+
+.secondary-frame {
+  background-color: aliceblue;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+  display: flex;
+  overflow: auto;
 }
 
 .type-frame {
@@ -81,21 +99,24 @@ button:hover, button:active {
   border: 1px solid white;
   border-radius: 20px;
   box-shadow: 0 0 0 1px black;
-  text-shadow:
+  -webkit-text-stroke: 1px black;
+
+  /*text-shadow:
 		-1px -1px 0 black,
 		1px -1px 0 black,
 		-1px 1px 0 black,
-		1px 1px 0 black;
+		1px 1px 0 black;*/
 }
 
+.description {
+  display: none;
+}
 .pokemon-name {
   font-weight: bold;
 }
 
 .pokemon-sprite {
-  background-color: aliceblue;
-  border: 1px solid steelblue;
-  border-radius: 5px;
+  float: left;
 }
 
 .dex-searchbar {
@@ -113,7 +134,7 @@ button:hover, button:active {
 
 .stat-bar {
   float: right;
-  border: 1px solid green;
+  border: 1px solid steelblue;
   border-radius: 10px;
   overflow: hidden;
   margin: 1px;

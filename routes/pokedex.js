@@ -27,47 +27,58 @@ async function serveHomePage (req, res, next) {
 /* Try to serve a pokemon page */
 async function servePokemonPage(req, res, next) {
   console.log("serving pokemonpage");
+  console.log("function: servePokemonPage");
   function renderPokepage(pokemon) {
+    console.log("function: renderPokemonPage");
     res.render('pokedex/pokemon_page', {
       title: "Pokémon: " + pokemon.name,
       pokemon: pokemon,
       species: species,
       types: pokemonPage.getTypes(pokemon),
+      descriptions: pokemonPage.getDescriptions(species),
     });
   }
   
-  var species = await P.getPokemonSpeciesByName(req.params.id) // with Promise
+  var species = await P.getPokemonSpeciesByName(req.params.id)
     .then(function(response) {
+      console.log("function: P.getPokemonSpeciesByName");
       return response;
     })
     .catch(function(error) {
       console.log(error);
-      next();
+      return undefined;
     });
-    
-  var pokemon = await P.getPokemonByName(pokemonPage.geDefaultVariety(species).pokemon.name) // with Promise
-    .then(function(response) {
-      return response;
-    })
-    .catch(function(error) {
-      console.log(error);
+  if (species == undefined) {
+    next();
+  } else {
+    var pokemon = await P.getPokemonByName(pokemonPage.getDefaultVariety(species).pokemon.name) // with Promise
+      .then(function(response) {
+        console.log("function: P.getPokemonByName");
+        return response;
+      })
+      .catch(function(error) {
+        console.log(error);
+        return undefined;
+      });
+    if (pokemon == undefined) {
       next();
-    });
-    
-  renderPokepage(pokemon, species);
+    } else {
+      renderPokepage(pokemon, species);
+    }
+  }
 }
 
 async function serveTypePage(req, res, next) {
   console.log("serving typepage");
-  function renderPokepage(response) {
+  function renderTypepage(response) {
     res.render('pokedex/type_page', {
       title: "type",
-      pokemon: response.name,
+      type: response,
     });
   }
 
-  await P.getTypeByName(req.params.id) // with Promise
-    .then(renderPokepage)
+  await P.getTypeByName(req.params.id) 
+    .then(renderTypepage)
     .catch(function(error) {
       console.log(error);
       next();

@@ -3,8 +3,16 @@ extends partials/layout
 block content
   script(type="text/javascript" src="/pokedex_resources/javascript/pokemon_page.js")
   div.main-frame.left-align.pokemon-overview
-    div.pokemon-name= species.name
-    img(src= pokemon.sprites.front_default).pokemon-sprite
+    div.pokemon-name= pokemon.species.name
+    img(src= pokemon.sprites.front_default).secondary-frame.pokemon-sprite
+    
+  div.main-frame
+    select#version_description_select(onchange="changeDescription()")
+      each description in descriptions
+        option(value="#{description.version.name}")= description.version.name
+    each description in descriptions
+      div(id="#{description.version.name}").secondary-frame.description= description.flavor_text
+
   div.main-frame.left-align
     div#type_frame(style="background: linear-gradient(90deg," + types[0].color + "," + types[0].color + "," + types[1].color + "," + types[1].color + ");").left-align.type-frame
       = types[0].name + " " + types[1].name
