@@ -16,9 +16,23 @@ module.exports = {
     ice: "aliceblue",
     dragon: "indigo",
     dark: "#333333",
+    bug: "olive",
     fairy: "orchid",
     unknown: "grey",
     shadow: "gray",
+  },
+  
+  backgroundColors: {
+    black: "dimgray",
+    blue: "skyblue",
+    brown: "sienna",
+    gray: "lightgray",
+    green: "lightgreen",
+    pink: "lightpink",
+    purple: "plum",
+    red: "lightcoral",
+    white: "white",
+    yellow: "khaki",
   },
   
   getTypes: function (pokemon) {
