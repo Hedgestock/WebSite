@@ -7,8 +7,8 @@ const  options = {
   protocol: 'https',
   //hostName: 'localhost:443',
   versionPath: '/api/v2/',
-  cacheLimit: 24 * 60 * 60 * 1000, // h * m * s * ms
-  timeout: 5 * 1000 // 5s
+  //cacheLimit: 24 * 60 * 60 * 1000, // h * m * s * ms
+  //timeout: 5 * 1000 // 5s
 }
 const  P = new Pokedex(options);
 
@@ -25,7 +25,7 @@ async function serveHomePage (req, res, next) {
 }
 
 /* Try to serve a pokemon page */
-async function servePokemonPage(req, res, next) {
+function servePokemonPage(req, res, next) {
   console.log("serving pokemonpage");
   console.log("function: servePokemonPage");
   function renderPokepage(pokemon) {
@@ -36,36 +36,31 @@ async function servePokemonPage(req, res, next) {
       species: species,
       types: pokemonPage.getTypes(pokemon),
       descriptions: pokemonPage.getDescriptions(species),
+      background: pokemonPage.backgroundColors[species.color.name],
     });
   }
   
-  var species = await P.getPokemonSpeciesByName(req.params.id)
-    .then(function(response) {
-      console.log("function: P.getPokemonSpeciesByName");
-      return response;
-    })
-    .catch(function(error) {
-      console.log(error);
-      return undefined;
-    });
-  if (species == undefined) {
-    next();
-  } else {
-    var pokemon = await P.getPokemonByName(pokemonPage.getDefaultVariety(species).pokemon.name) // with Promise
-      .then(function(response) {
+  var species = undefined;
+  var pokemon = undefined;
+  P.getPokemonSpeciesByName(req.params.id, function(response, error) {
+    console.log("function: P.getPokemonSpeciesByName");
+    if(!error) {
+      species = response;
+      P.getPokemonByName(pokemonPage.getDefaultVariety(species).pokemon.name, function(response, error) {
         console.log("function: P.getPokemonByName");
-        return response;
-      })
-      .catch(function(error) {
-        console.log(error);
-        return undefined;
+        if(!error) {
+          pokemon = response;
+          renderPokepage(pokemon, species);
+        } else {
+          console.log(error);
+          next();
+        }
       });
-    if (pokemon == undefined) {
-      next();
     } else {
-      renderPokepage(pokemon, species);
+      console.log(error);
+      next();
     }
-  }
+  });
 }
 
 async function serveTypePage(req, res, next) {
