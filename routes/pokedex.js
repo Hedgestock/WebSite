@@ -19,8 +19,23 @@ router.use(express.static(path.join(__dirname, '../wiews/pokedex/public')));
 
 async function serveHomePage (req, res, next) {
   console.log("serving homedex");
-  res.render('pokedex/home_dex', {
-    title: "Aïtokédex",
+  function renderHomePage(pokelist) {
+    res.render('pokedex/home_dex', {
+      title: "Aïtokédex",
+      pokelist: pokelist,
+    });
+  }
+  var interval = {
+    limit: 2000,
+    offset: 0
+  }
+  P.getPokemonSpeciesList(interval,function(response, error) {
+    if(!error) {
+      renderHomePage(response);
+    } else {
+      console.log(error);
+      next();
+    }
   });
 }
 
@@ -63,7 +78,7 @@ function servePokemonPage(req, res, next) {
   });
 }
 
-async function serveTypePage(req, res, next) {
+function serveTypePage(req, res, next) {
   console.log("serving typepage");
   function renderTypepage(response) {
     res.render('pokedex/type_page', {
@@ -72,7 +87,7 @@ async function serveTypePage(req, res, next) {
     });
   }
 
-  await P.getTypeByName(req.params.id) 
+  P.getTypeByName(req.params.id) 
     .then(renderTypepage)
     .catch(function(error) {
       console.log(error);
