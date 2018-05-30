@@ -59,9 +59,47 @@ select {
   text-transform: capitalize;
 }
 
+table{
+  /*display: table;*/
+  background-color: lightblue;
+  border: 1px solid steelblue;
+  border-radius: 10px;
+  margin: 2px;
+  padding: 3px;
+  overflow: auto;
+}
+
+th {
+  background-color: aliceblue;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+td {
+  background-color: aliceblue;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+table a {
+  color: black;
+  text-decoration: none;
+}
+
+.table-row {
+  background-color: aliceblue;
+  border-bottom: 1px solid steelblue;
+}
+
 .vertical-center {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.center-align {
+  text-align: center;
 }
 
 .left-align {
@@ -176,6 +214,11 @@ select {
   border-radius: 4px; 
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }
+
+.horizontal-separator {
+  clear: both;
+}
+
 
 /***********************
 **       NAVBAR       **
