@@ -1,9 +1,9 @@
 extends partials/layout
 
 block navigation
-  div
-    button#prev_button(onclick="location.href='/pokedex/pokemon/' + ((#{species.id} + 800)%802 + 1);").nav-button < previous
-    button#next_button(onclick="location.href='/pokedex/pokemon/' + (#{species.id}%802 + 1);").nav-button next >
+  div.horizontal-separator
+  button#prev_button(onclick="location.href='/pokedex/pokemon/' + ((#{species.id} + 800)%802 + 1);").nav-button < previous
+  button#next_button(onclick="location.href='/pokedex/pokemon/' + (#{species.id}%802 + 1);").nav-button next >
 
 block content
   script(type="text/javascript" src="/pokedex_resources/javascript/pokemon_page.js")
