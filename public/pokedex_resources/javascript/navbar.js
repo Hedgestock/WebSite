@@ -1,7 +1,3 @@
-function searchGeneral() {
-  window.location.href = "/pokedex/" + document.getElementById('nav_searchbar').value.toLowerCase();
-}
-
 window.addEventListener("load",function () {
   document.getElementById("nav_searchbar").addEventListener("keydown", function(event) {
 

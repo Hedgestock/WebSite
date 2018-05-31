@@ -12,9 +12,7 @@ const  options = {
 }
 const  P = new Pokedex(options);
 
-const pokemonPage = require("./pagebuilder_modules/pokemon_page.js");
 
-router.use(express.static(path.join(__dirname, '../wiews/pokedex/public')));
 
 
 async function serveHomePage (req, res, next) {
@@ -43,39 +41,14 @@ async function serveHomePage (req, res, next) {
 function servePokemonPage(req, res, next) {
   console.log("serving pokemonpage");
   console.log("function: servePokemonPage");
-  function renderPokepage(pokemon) {
+  function renderPokepage(id) {
     console.log("function: renderPokemonPage");
     res.render('pokedex/pokemon_page', {
-      title: "Pokémon: " + pokemon.name,
-      pokemon: pokemon,
-      species: species,
-      types: pokemonPage.getTypes(pokemon),
-      descriptions: pokemonPage.getDescriptions(species),
-      background: pokemonPage.backgroundColors[species.color.name],
+      title: "Pokémon: ",
+      id: id,
     });
   }
-  
-  var species = undefined;
-  var pokemon = undefined;
-  P.getPokemonSpeciesByName(req.params.id, function(response, error) {
-    console.log("function: P.getPokemonSpeciesByName");
-    if(!error) {
-      species = response;
-      P.getPokemonByName(pokemonPage.getDefaultVariety(species).pokemon.name, function(response, error) {
-        console.log("function: P.getPokemonByName");
-        if(!error) {
-          pokemon = response;
-          renderPokepage(pokemon, species);
-        } else {
-          console.log(error);
-          next();
-        }
-      });
-    } else {
-      console.log(error);
-      next();
-    }
-  });
+  renderPokepage(req.params.id);
 }
 
 function serveTypePage(req, res, next) {

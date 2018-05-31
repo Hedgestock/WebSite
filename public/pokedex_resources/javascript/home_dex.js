@@ -1,5 +1,14 @@
-function search() {
-  window.location.href = "/pokedex/pokemon/" + document.getElementById('dex_searchbar').value.toLowerCase();
+function set_pokedata_interactions(){
+  selectedDescription = document.getElementById("version_description_select").value;
+  document.getElementById(selectedDescription).style.display = "block";
+//  species_id = document.getElementById("pokedatas").getAttribute('species_id');
+//  document.getElementById("prev_button").onclick = function () { location.href = '/pokedex/pokemon/' + ((parseInt(species_id) + 800)%802 + 1); };
+//  document.getElementById("next_button").onclick = function () { location.href = '/pokedex/pokemon/' + ((parseInt(species_id) % 802) + 1); };
+}
+
+function getRandomPokedata(){
+  random_id = 1 + Math.floor(Math.random() * document.getElementById("pokelist").getAttribute('count'));
+  httpGetAsync("/pokedata/pokemon/" + random_id , load_partial, "pokedata_container", set_pokedata_interactions);
 }
 
 window.addEventListener("load",function () { 
@@ -14,3 +23,5 @@ window.addEventListener("load",function () {
     }
   });
 },false);
+
+httpGetAsync("/pokedata/pokelist", load_partial, "pokelist_container", getRandomPokedata);

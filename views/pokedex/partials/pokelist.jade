@@ -1,0 +1,11 @@
+table#pokelist(count=pokelist.count)
+  tr
+    th name
+    th index
+  - var i = 1;
+  each pkmn in pokelist.results
+    tr
+      td
+        a(href="/pokedex/pokemon/" + pkmn.name)= pkmn.name
+      td(style="text-align: right;")
+        a(href="/pokedex/pokemon/" + i)= "#" + i++

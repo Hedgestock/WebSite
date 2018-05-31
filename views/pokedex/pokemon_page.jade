@@ -1,46 +1,13 @@
-extends partials/layout
+extends partials/static/layout
 
 block navigation
   div.horizontal-separator
-  button#prev_button(onclick="location.href='/pokedex/pokemon/' + ((#{species.id} + 800)%802 + 1);").nav-button < previous
-  button#next_button(onclick="location.href='/pokedex/pokemon/' + (#{species.id}%802 + 1);").nav-button next >
+  button#prev_button.nav-button < previous
+  button#next_button.nav-button next >
 
 block content
   script(type="text/javascript" src="/pokedex_resources/javascript/pokemon_page.js")
-    
-  h1#Summary Summary
-  
-  div(style="  background-color: #{background};").pokemon-color
-    div.main-frame.left-align.pokemon-overview
-      div.pokemon-name= pokemon.species.name
-      img(src= pokemon.sprites.front_default).secondary-frame.pokemon-sprite
-    
-    div.main-frame
-      select#version_description_select(onchange="changeDescription()")
-        each description in descriptions
-          option(value="#{description.version.name}")= description.version.name
-      each description in descriptions
-        div(id="#{description.version.name}").secondary-frame.description= description.flavor_text
-
-    div.main-frame.left-align
-      div#type_frame(style="background: linear-gradient(90deg," + types[0].color + "," + types[0].color + "," + types[1].color + "," + types[1].color + ");").left-align.type-frame
-        = types[0].name + " " + types[1].name
-      div.stat-frame
-        div.stat
-          | HP: 
-          progress#hp(max="255", value= pokemon.stats[5].base_stat).stat-bar
-        div.stat
-          | Attack: 
-          progress#attack(max="255", value= pokemon.stats[4].base_stat).stat-bar
-        div.stat
-          | Defense: 
-          progress#defense(max="255", value= pokemon.stats[3].base_stat).stat-bar
-        div.stat
-          | Special attack: 
-          progress#special-attack(max="255", value= pokemon.stats[2].base_stat).stat-bar
-        div.stat
-          | Special defense: 
-          progress#special-defense(max="255", value= pokemon.stats[1].base_stat).stat-bar
-        div.stat
-          | Speed: 
-          progress#speed(max="255", value= pokemon.stats[0].base_stat).stat-bar
+  div#content
+    script.
+      httpGetAsync("/pokedata/pokemon/#{id}", load_partial, "content", set_pokedata_interactions);
+    img(src="/pokedex_resources/images/pokeball_720.png").loading_ball

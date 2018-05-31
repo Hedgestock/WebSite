@@ -26,6 +26,10 @@ h1 {
   border-bottom: 2px solid lightblue;
 }
 
+h2 {
+  margin: 0;
+}
+
 a {
 }
 
@@ -70,6 +74,7 @@ table{
 }
 
 th {
+  width: 3em;
   background-color: aliceblue;
   border: 1px solid steelblue;
   border-radius: 5px;
@@ -88,6 +93,18 @@ table a {
   text-decoration: none;
 }
 
+@-moz-keyframes loading { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes loading { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes loading { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+.loading_ball{
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    -webkit-animation:loading 4s linear infinite;
+    -moz-animation:loading 4s linear infinite;
+    animation:loading 4s linear infinite;
+}
 .table-row {
   background-color: aliceblue;
   border-bottom: 1px solid steelblue;
@@ -96,10 +113,6 @@ table a {
 .vertical-center {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.center-align {
-  text-align: center;
 }
 
 .left-align {
@@ -150,6 +163,14 @@ table a {
 		1px -1px 0 black,
 		-1px 1px 0 black,
 		1px 1px 0 black;*/
+}
+
+.random-pokedata
+{
+  display: inline-block;
+  max-width: 500px;
+  border: 5px inset lightblue;
+  border-radius: 10px;
 }
 
 .pokemon-color {

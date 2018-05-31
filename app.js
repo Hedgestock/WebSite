@@ -7,6 +7,7 @@ const  logger = require('morgan');
 const  portfolioRouter = require('./routes/portfolio');
 const  gatewayRouter = require('./routes/gateway');
 const  pokedexRouter = require('./routes/pokedex');
+const  pokedataRouter = require('./routes/pokedata');
 
 const  app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', portfolioRouter);
 app.use('/gateway', gatewayRouter);
 app.use('/pokedex', pokedexRouter);
+app.use('/pokedata', pokedataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

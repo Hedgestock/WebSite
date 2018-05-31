@@ -1,4 +1,4 @@
-extends partials/layout
+extends partials/static/layout
 
 block content
   script(type="text/javascript" src="/pokedex_resources/javascript/home_dex.js")
@@ -6,15 +6,16 @@ block content
     input#dex_searchbar.dex-searchbar
     br
     button#dex_searchbtn(onclick="search();") Search that pokémon !
+    
+  button(onclick="getRandomPokedata();") Search that pokémon !
+  
   div.horizontal-separator
-  table
-    tr
-      th name
-      th index
-    - var i = 1;
-    each pkmn in pokelist.results
-      tr
-        td
-          a(href="/pokedex/pokemon/" + pkmn.name)= pkmn.name
-        td.center-align
-          a(href="/pokedex/pokemon/" + i)= i++
+
+  div.random-pokedata
+    h2 Random Pokémon:
+    div#pokedata_container
+      img(src="/pokedex_resources/images/pokeball_720.png").loading_ball
+
+  div#pokelist_container.left-align
+    img(src="/pokedex_resources/images/pokeball_720.png").loading_ball
+    
