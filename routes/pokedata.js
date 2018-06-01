@@ -33,7 +33,8 @@ async function servePokedexList (req, res, next) {
       renderHomePage(response);
     } else {
       console.log(error);
-      next();
+      next(createError(error.response.status, error.response.statusText));
+      //next();
     }
   });
 }
@@ -65,12 +66,14 @@ function servePokemonDataPage(req, res, next) {
           renderPokedata(pokemon, species);
         } else {
           console.log(error);
-          next();
+          next(createError(error.response.status, error.response.statusText));
+          //next();
         }
       });
     } else {
       console.log(error);
-      next();
+      next(createError(error.response.status, error.response.statusText));
+      //next();
     }
   });
 }
@@ -100,7 +103,7 @@ router.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('pokedex/error');
+  res.render('pokedex/partials/error');
 });
 
 module.exports = router;

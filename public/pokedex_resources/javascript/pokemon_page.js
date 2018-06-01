@@ -1,6 +1,7 @@
 var selectedDescription;
 
 function set_pokedata_interactions(){
+  document.title = "Pokémon: " + document.getElementById("pokemon_name").innerHTML;
   selectedDescription = document.getElementById("version_description_select").value;
   document.getElementById(selectedDescription).style.display = "block";
   species_id = document.getElementById("pokedatas").getAttribute('species_id');

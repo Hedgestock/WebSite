@@ -2,20 +2,21 @@ extends partials/static/layout
 
 block content
   script(type="text/javascript" src="/pokedex_resources/javascript/home_dex.js")
-  div.main-frame.left-align
-    input#dex_searchbar.dex-searchbar
-    br
-    button#dex_searchbtn(onclick="search();") Search that pokémon !
+  div(style="max-width: 1250px; margin: auto")
+    div.main-frame.left-align
+      input#dex_searchbar.dex-searchbar
+      br
+      button#dex_searchbtn(onclick="search();") Search that pokémon !
+      
+    button(onclick="getRandomPokedata();").right-align Get another random pokémon.
     
-  button(onclick="getRandomPokedata();") Search that pokémon !
-  
-  div.horizontal-separator
+    div.horizontal-separator
 
-  div.random-pokedata
-    h2 Random Pokémon:
-    div#pokedata_container
+    div.random-pokedata
+      h2 Random Pokémon:
+      div#pokedata_container
+        img(src="/pokedex_resources/images/pokeball_720.png").loading_ball
+
+    div#pokelist_container.left-align
       img(src="/pokedex_resources/images/pokeball_720.png").loading_ball
-
-  div#pokelist_container.left-align
-    img(src="/pokedex_resources/images/pokeball_720.png").loading_ball
-    
+      

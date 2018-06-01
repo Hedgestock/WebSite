@@ -44,7 +44,7 @@ function servePokemonPage(req, res, next) {
   function renderPokepage(id) {
     console.log("function: renderPokemonPage");
     res.render('pokedex/pokemon_page', {
-      title: "Pokémon: ",
+      title: "Pokémon: Loading",
       id: id,
     });
   }
@@ -84,15 +84,16 @@ router.get('/type/:id', serveTypePage);
 */
 
 /* GET a pokemon page */
-router.get('/:id', servePokemonPage);
+//router.get('/:id', servePokemonPage);
 
 /* GET a type page */
-router.get('/:id', serveTypePage);
+//router.get('/:id', serveTypePage);
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 router.use(function(err, req, res, next) {

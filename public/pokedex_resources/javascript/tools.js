@@ -1,4 +1,4 @@
-function search() {
+function searchPokemon() {
   window.location.href = "/pokedex/pokemon/" + document.getElementById('dex_searchbar').value.toLowerCase();
 }
 
@@ -16,7 +16,7 @@ function httpGetAsync(theUrl, callback, element_id, next)
 {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        if (xmlHttp.readyState == 4) //&& xmlHttp.status == 200)
             callback(xmlHttp.responseText, element_id, next);
     }
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
