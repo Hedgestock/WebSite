@@ -3,11 +3,22 @@ extends partials/static/layout
 block content
   script(type="text/javascript" src="/pokedex_resources/javascript/home_dex.js")
   div(style="max-width: 1250px; margin: auto")
-    div.main-frame.left-align
+    div.main-frame.left-align(ng-app="pokeApp" ng-controller="pokeCtrl")
       input#dex_searchbar.dex-searchbar
+      //
+        select#dex_searchsel(ng-model="selectedSearch" ng-init="selectedSearch = options[0]" ng-options="o.desc for o in options")
       br
-      button#dex_searchbtn(onclick="search();") Search that pokémon !
-      
+      button#dex_searchbtn(onclick="searchPokemon('dex_searchbar');") Search that pokémon !
+    
+    script.
+      var app = angular.module('pokeApp', []);
+      app.controller('pokeCtrl', function($scope) {
+          $scope.options = [
+              {func : "searchPokemon",  desc : "pokémon"},
+              {func : "searchType", desc : "type"},
+          ];
+      });
+
     button(onclick="getRandomPokedata();").right-align Get another random pokémon.
     
     div.horizontal-separator
@@ -19,4 +30,3 @@ block content
 
     div#pokelist_container.left-align
       img(src="/pokedex_resources/images/pokeball_720.png").loading_ball
-      

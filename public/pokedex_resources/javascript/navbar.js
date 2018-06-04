@@ -6,7 +6,7 @@ window.addEventListener("load",function () {
       // Cancel the default action, if needed
       event.preventDefault();
       // Trigger the button element with a click
-      searchPokemon();
+      searchPokemon("nav_searchbar");
     }
   });
 },false);

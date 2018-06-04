@@ -1,5 +1,5 @@
-function searchPokemon() {
-  window.location.href = "/pokedex/pokemon/" + document.getElementById('dex_searchbar').value.toLowerCase();
+function searchPokemon(searchbar_id) {
+  window.location.href = "/pokedex/pokemon/" + document.getElementById(searchbar_id).value.toLowerCase();
 }
 
 function searchGeneral() {
